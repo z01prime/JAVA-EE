@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<typeAliases>
+<package name="entity"/>
+</typeAliases>
+	<!-- 数据库连接配置信息池
+		default:当前使用的连接配置
+	 -->
+	<environments default="e1">
+		<!-- 数据库连接配置信息
+			id : 给当前配置起名字
+		 -->
+		<environment id="e1">
+			<!-- 设置事务控制机制
+				type: JDBC   使用原始的自动控制事务机制
+				      Managered  使用第三方插件控制事务
+			 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 数据库连接配置 
+				type  :  POOLED    使用数据库连接池       占内存,crud效率提高
+				         UNPOOLED   不适用数据库连接池   不占内存,效率低  
+			-->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/employee?serverTimezone=Asia/Shanghai"/>
+				<property name="username" value="root"/>
+				<property name="password" value="123456"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 注册dao接口对应的mapper.xml -->
+	<mappers>
+		
+		<package name="dao"/>
+	</mappers>
+	
+</configuration>
