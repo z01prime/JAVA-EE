@@ -22,8 +22,7 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		
-		//�����ñ���
+
 		req.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html;charset=UTF-8");
 

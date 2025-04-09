@@ -36,6 +36,4 @@ public class ComUser {
 	public String toString() {
 		return "ComUser [id=" + id + ", name=" + name + ", pwd=" + pwd + "]";
 	}
-	
-
 }

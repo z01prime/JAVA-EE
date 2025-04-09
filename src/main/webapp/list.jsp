@@ -8,11 +8,12 @@
 		body {
 			margin: 0;
 			font-family: Arial, sans-serif;
-			background: #f0f2f5 url('./img/bg4.jpg') no-repeat center/cover;
+			/*background: #f0f2f5;*/
+			background: #f0f2f5 url('./img/bg4.png') no-repeat center/cover;
 			min-height: 100vh;
 		}
 		.header {
-			background: #fff;
+			background: rgba(255, 255, 255, 0.6);
 			padding: 0 20px;
 			display: flex;
 			justify-content: space-between;
@@ -100,7 +101,7 @@
 </head>
 <body>
 <div class="header">
-	<div class="logo">员工信息管理系统</div>
+	<div>员工信息管理系统</div>
 	<div class="nav-right">
 		<c:choose>
 			<c:when test="${empty name}">
