@@ -10,6 +10,8 @@
 			--danger-color: #ff4d4f;
 			--bg-color: #f0f2f5;
 			--sidebar-bg: #2f4050;
+			--highlight-color: #1a2531; /* 深色背景用于新加部分 */
+			--hover-color: #293846; /* 鼠标悬停时的颜色 */
 		}
 		body {
 			margin: 0;
@@ -39,6 +41,8 @@
 			width: 200px;
 			background: var(--sidebar-bg);
 			padding: 20px 0;
+			display: flex;
+			flex-direction: column;
 		}
 		.sidebar-item {
 			padding: 12px 20px;
@@ -48,8 +52,18 @@
 			transition: 0.3s;
 		}
 		.sidebar-item:hover {
-			background: #293846;
+			background: var(--hover-color);
 		}
+
+		/* 员工相关和本地知识库项 */
+		.highlight-item {
+			background: var(--highlight-color);
+		}
+
+		.highlight-item:hover {
+			background: var(--hover-color); /* 保持悬停效果 */
+		}
+
 		.main-content {
 			flex: 1;
 			padding: 30px;
@@ -129,7 +143,8 @@
 <body>
 <div class="header">
 	<div>
-		<a href="${pageContext.request.contextPath}/admin/showAll" class="nav-link">控制台</a>
+		<!-- 将“控制台”链接的左边距调整为和 sidebar 对齐 -->
+		<a href="${pageContext.request.contextPath}/admin/showAll" class="nav-link" style="margin-left: 0;">控制台</a>
 	</div>
 	<div class="user-info">
 		<img src="${pageContext.request.contextPath}/img/user.png" alt="用户">
@@ -138,11 +153,17 @@
 	</div>
 </div>
 
+
 <div class="container">
 	<nav class="sidebar">
-		<a href="#" class="sidebar-item">首页</a>
+		<!-- 员工相关分区 -->
+		<a href="#" class="sidebar-item highlight-item">员工相关</a>
 		<a href="${pageContext.request.contextPath}/admin/showAll" class="sidebar-item">员工管理</a>
 		<a href="${pageContext.request.contextPath}/admin/addone" class="sidebar-item">添加员工</a>
+
+		<!-- 本地知识库分区 -->
+		<a href="#" class="sidebar-item highlight-item">本地知识库</a>
+		<a href="${pageContext.request.contextPath}/talkToLLM.jsp" class="sidebar-item">与LLM对话</a>
 	</nav>
 
 	<main class="main-content">
@@ -168,7 +189,13 @@
 			</div>
 		</form>
 
-		<h2>员工列表</h2>
+		<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+			<h2 style="margin: 0;">员工列表</h2>
+			<form action="${pageContext.request.contextPath}/admin/exportTxt" method="post">
+				<button type="submit" class="btn btn-search">导出员工数据</button>
+			</form>
+		</div>
+
 		<table>
 			<thead>
 			<tr>
@@ -204,4 +231,3 @@
 </div>
 </body>
 </html>
-

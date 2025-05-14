@@ -132,7 +132,7 @@ public class EmplServiceImpl implements EmplService {
 		}
 		return em;
 	}
-		//ģ����ѯ
+		//模糊查询
 	@Override
 	public List<Empl> selectMohu(String name, String ageBegin, String ageEnd,String dept) {
 		SqlSession session=null;
@@ -180,5 +180,29 @@ public class EmplServiceImpl implements EmplService {
 		
 	}
 
+	@Override
+	public boolean existsById(int id) {
+		SqlSession session = null;
+		boolean exists = false;
+		try {
+			session = MybatisUtil.getSqlSession();
+			EmplDao dao = session.getMapper(EmplDao.class);
+
+			// 调用existsById查询
+			exists = dao.existsById(id);
+
+			session.commit();
+		} catch (Exception e) {
+			try {
+				session.rollback();
+			} catch (Exception e1) {
+				throw new RuntimeException(e1);
+			}
+			throw new RuntimeException(e);
+		} finally {
+			MybatisUtil.closeSqlSession(session);
+		}
+		return exists;
+	}
 
 }

@@ -26,31 +26,31 @@ public class ShowList extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        //ÊÕ²Î
+        //æ”¶å‚
         String name = req.getParameter("name");
         String ageBegin = req.getParameter("ageBegin");
         String ageEnd = req.getParameter("ageEnd");
         String dept = req.getParameter("dept");
 
-        //µ÷ÓÃservice
+        //è°ƒç”¨service
 
         DeptService ds = new DeptServiceImpl();
         List<Dept> dept1 = ds.selectAll();
 
-        //list´æÈë×÷ÓÃÓò
+        //listå­˜å…¥ä½œç”¨åŸŸ
         req.setAttribute("dept1", dept1);
 
-        //list½ø×÷ÓÃÓÚ
+        //listè¿›ä½œç”¨äº
 
-        //µ÷ÓÃservice
+        //è°ƒç”¨service
         EmplService es = new EmplServiceImpl();
 
         List<Empl> list1 = es.selectMohu(name, ageBegin, ageEnd, dept);
-        //½«list·ÅÈë×÷ÓÃÓò
+        //å°†listæ”¾å…¥ä½œç”¨åŸŸ
         req.setAttribute("list", list1);
 
 
-        //×ª·¢µ½jspÒ³Ãæ
+        //è½¬å‘åˆ°jspé¡µé¢
         req.getRequestDispatcher("/list.jsp").forward(req, res);
 
     }

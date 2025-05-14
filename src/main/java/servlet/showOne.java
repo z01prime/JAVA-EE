@@ -31,13 +31,10 @@ public class showOne extends HttpServlet {
 				 Empl empl = es.selectById(id);
 				 
 				 req.setAttribute("empl", empl);
-				 
-				 //����
-				//����service��ȡ����
+
 					DeptService ds = new DeptServiceImpl();
 					List<Dept> list = ds.selectAll();
-					
-					//list����������
+
 					req.setAttribute("dept", list);
 				 
 				 req.getRequestDispatcher("/updateEmp.jsp").forward(req, res);

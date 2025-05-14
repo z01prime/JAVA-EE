@@ -57,7 +57,7 @@ public class ComUserServiceImpl implements ComUserService{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			throw new RuntimeException("√˚◊÷≤È—Ø“Ï≥£");
+			throw new RuntimeException("ÂêçÂ≠óÊü•ËØ¢ÂºÇÂ∏∏");
 		}finally{
 			MybatisUtil.closeSqlSession(session);
 		}
@@ -78,9 +78,9 @@ public class ComUserServiceImpl implements ComUserService{
 				session.rollback();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
-				throw new RuntimeException("ÃÌº”“Ï≥£");
+				throw new RuntimeException("Ê∑ªÂä†ÂºÇÂ∏∏");
 			}
-			throw new RuntimeException("ÃÌº”“Ï≥£");
+			throw new RuntimeException("Ê∑ªÂä†ÂºÇÂ∏∏");
 		}finally{
 			MybatisUtil.closeSqlSession(session);
 		}

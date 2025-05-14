@@ -100,7 +100,7 @@
 	</div>
 </div>
 
-<script src="${pageContext.request.contextPath}/layui/jquery.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/layui/jquery.min.js"></script>--%>
 <script>
 	$(document).ready(function(){
 		$('#regForm').submit(function(e){

@@ -68,4 +68,12 @@
      #{id}
     </foreach>
    </delete>
+
+
+    <select id="existsById" resultType="boolean">
+        SELECT COUNT(*) > 0
+        FROM ems_employees
+        WHERE id = #{id}
+    </select>
+
 </mapper>

@@ -22,7 +22,7 @@ public class LoginOutServlet extends HttpServlet {
 		HttpSession session = req.getSession();
         session.invalidate();       
 
-        //Çå³ýcookie£¬²¢ÇÒÍË³ö
+        //æ¸…é™¤cookieï¼Œå¹¶ä¸”é€€å‡º
         Cookie[] cookies = req.getCookies();
         for (Cookie cookie : cookies) {
             cookie.setMaxAge(0);

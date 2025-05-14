@@ -28,11 +28,11 @@ public class UpdateServlet extends HttpServlet {
 		String sex=req.getParameter("sex");
 		int idd=Integer.parseInt(req.getParameter("idd"));
 		
-		//调用service
+		//璋冪敤service
 		EmplService es = new EmplServiceImpl();
 		es.update(new Empl(id,name,salary,age,sex,new Dept(idd)));
 		
-		//动态获取项目名
+		//鍔ㄦ�佽幏鍙栭」鐩悕
 		String path=req.getContextPath();
 		
 		res.sendRedirect(path+"/admin/showAll");

@@ -10,6 +10,8 @@
 			--danger-color: #ff4d4f;
 			--bg-color: #f0f2f5;
 			--sidebar-bg: #2f4050;
+			--highlight-color: #1a2531;
+			--hover-color: #293846;
 		}
 		body {
 			margin: 0;
@@ -39,6 +41,8 @@
 			width: 200px;
 			background: var(--sidebar-bg);
 			padding: 20px 0;
+			display: flex;
+			flex-direction: column;
 		}
 		.sidebar-item {
 			padding: 12px 20px;
@@ -48,54 +52,65 @@
 			transition: 0.3s;
 		}
 		.sidebar-item:hover {
-			background: #293846;
+			background: var(--hover-color);
+		}
+		.highlight-item {
+			background: var(--highlight-color);
+		}
+		.highlight-item:hover {
+			background: var(--hover-color);
 		}
 		.main-content {
 			flex: 1;
 			padding: 30px;
 		}
 		.form-container {
-			max-width: 600px;
-			margin: 0 auto;
 			background: white;
 			padding: 30px;
 			border-radius: 8px;
 			box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+			max-width: 600px;
+			margin: 0 auto;
 		}
 		.form-title {
-			text-align: center;
+			font-size: 20px;
+			font-weight: bold;
 			margin-bottom: 25px;
+			text-align: center;
 		}
 		.form-group {
-			margin-bottom: 20px;
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 15px;
 		}
 		label {
-			display: block;
 			margin-bottom: 8px;
 			font-weight: 500;
 		}
 		input, select {
-			width: 100%;
-			padding: 10px;
+			padding: 8px 12px;
 			border: 1px solid #ddd;
 			border-radius: 4px;
 			box-sizing: border-box;
 		}
 		.radio-group {
 			display: flex;
-			gap: 50px;
-			/*padding: 10px 0;*/
+			gap: 30px;
 		}
 		.radio-group label {
 			display: flex;
 			align-items: center;
+			font-weight: normal;
+		}
+		.radio-group input {
+			margin-right: 6px;
 		}
 		.form-actions {
 			text-align: center;
-			margin-top: 30px;
+			margin-top: 20px;
 		}
 		.btn {
-			padding: 10px 25px;
+			padding: 8px 20px;
 			border: none;
 			border-radius: 4px;
 			cursor: pointer;
@@ -108,7 +123,7 @@
 		.btn-reset {
 			background: #f5f5f5;
 			color: #666;
-			margin-left: 15px;
+			margin-left: 10px;
 		}
 		.user-info {
 			display: flex;
@@ -124,7 +139,7 @@
 <body>
 <div class="header">
 	<div>
-		<a href="${pageContext.request.contextPath}/admin/showAll" class="nav-link">控制台</a>
+		<a href="${pageContext.request.contextPath}/admin/showAll" class="nav-link" style="margin-left: 0;">控制台</a>
 	</div>
 	<div class="user-info">
 		<img src="${pageContext.request.contextPath}/img/user.png" alt="用户">
@@ -135,14 +150,16 @@
 
 <div class="container">
 	<nav class="sidebar">
-		<a href="#" class="sidebar-item">首页</a>
+		<a href="#" class="sidebar-item highlight-item">员工相关</a>
 		<a href="${pageContext.request.contextPath}/admin/showAll" class="sidebar-item">员工管理</a>
 		<a href="${pageContext.request.contextPath}/admin/addone" class="sidebar-item">添加员工</a>
+		<a href="#" class="sidebar-item highlight-item">本地知识库</a>
+		<a href="${pageContext.request.contextPath}/talkToLLM.jsp" class="sidebar-item">与LLM对话</a>
 	</nav>
 
 	<main class="main-content">
 		<div class="form-container">
-			<h1 class="form-title">添加员工信息</h1>
+			<h2 class="form-title">添加员工信息</h2>
 			<form action="${pageContext.request.contextPath}/admin/add" method="post">
 				<div class="form-group">
 					<label>用户名</label>

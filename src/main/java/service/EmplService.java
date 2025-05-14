@@ -12,8 +12,10 @@ public interface EmplService {
 	void insert(Empl e);
 	void update(Empl em);
 	Empl selectById(int id);
-	//Ä£ºý²éÑ¯
-		List<Empl> selectMohu(@Param("name")String name,@Param("ageBegin")String ageBegin,@Param("ageEnd")String ageEnd,@Param("dept")String dept);
-	//ÅúÁ¿É¾³ýÓÅ»¯
-		void deleteMany(@Param("ids")List<Integer> ids);
+	//Ä£ï¿½ï¿½ï¿½ï¿½Ñ¯
+	List<Empl> selectMohu(@Param("name")String name,@Param("ageBegin")String ageBegin,@Param("ageEnd")String ageEnd,@Param("dept")String dept);
+	//ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Å»ï¿½
+	void deleteMany(@Param("ids")List<Integer> ids);
+
+    boolean existsById(int id);
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserProfileDao">
+
+    <!-- 映射查询结果 -->
+    <resultMap id="UserProfileMap" type="entity.UserProfile">
+        <id column="id" property="id"/>
+        <result column="profile" property="profile"/>
+    </resultMap>
+
+    <select id="selectById" resultType="entity.UserProfile">
+        SELECT id, profile
+        FROM e_user
+        WHERE id = #{id}
+    </select>
+
+    <!-- 更新个人简介 -->
+    <update id="updateProfile">
+        UPDATE e_user
+        SET profile = #{profile}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 插入个人简介 (如果需要) -->
+    <insert id="insertProfile">
+        INSERT INTO e_user (id, profile)
+        VALUES (#{id}, #{profile})
+    </insert>
+</mapper>
